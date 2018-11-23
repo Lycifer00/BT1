@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function min(x,y,z) {
+        if (x < y){
+            if (y < z){
+                alert('Min'+ '=' + x);
+            }
+            else {
+                if (x < z){
+                    alert('Min'+ '=' + x);
+                }
+                else {
+                    alert('Min' + '=' + z);
+                }
+            }
+        }
+        else {
+            if (y > z){
+                alert('Min' + '=' + z);
+            }
+            else {
+                alert('Min' + '=' + y);
+            }
+        }
+    }
+    min(12,2,3);
+</script>
+</body>
+</html>

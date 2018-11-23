@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function array(x) {
+        x = [1, 3, 4, 6, 7, 32];
+        for(var i=0; i < x.length-1; i++) {
+            for (var j = i + 1; j < x.length; j++) {
+                if (x[j] > x[i]) {
+                    var index;
+                    index = x[i];
+                    x[i] = x[j];
+                    x[j] = index;
+                }
+            }
+        }
+        console.log(x);
+    }
+
+    array();
+</script>
+</body>
+</html>
