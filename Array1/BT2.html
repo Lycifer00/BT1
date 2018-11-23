@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var int = [1, 2, 4, 7, 31, 321, 3, 42, 5, 23];
+    var max = int[0];
+    for (var i = 1; i <= int.length; i++){
+        if (int[i] > max){
+            max = int[i];
+        }
+
+    }
+    console.log(max);
+    console.log(int.indexOf(max));
+</script>
+</body>
+</html>
