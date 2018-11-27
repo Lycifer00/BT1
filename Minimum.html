@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function minArray(arr) {
+        //var min = arr[0];
+        for(var i = 0; i < arr.length; i++){
+            if(arr[i] < arr[0]){
+                arr[0] = arr[i];
+            }
+        }
+        return arr[0];
+    }
+    var arr1 =  [3, 5, -1, 8, -3, 7, 8];
+    var arr2 = [7, 12, 6, 9, 20, 56, 89];
+    var arr3 = [];
+    var arr4 = [0, 0, 0, 0, 0, 0];
+    minArray(arr1);
+    alert(minArray(arr1));
+    minArray(arr2);
+    alert(minArray(arr2));
+    minArray(arr3);
+    alert(minArray(arr3));
+    minArray(arr4);
+    alert(minArray(arr4));
+
+    function checkArray(arr) {
+        minArray();
+        if(arr.length === 0)
+            return -1;
+
+    }
+    checkArray(arr3);
+    alert(checkArray(arr3));
+
+
+</script>
+</body>
+</html>
