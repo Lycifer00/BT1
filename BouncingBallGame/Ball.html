@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<canvas id="myCanvas" width="1330px" height="550px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var ball = {
+        x : 20,
+        y : 20,
+        radius : 20,
+        dx : 1,
+        dy : 4
+    };
+
+    var paddle = {
+        width : 170,
+        height : 10,
+        x : 600,
+        y : canvas.height-100,
+        speed : 20,
+        isMovinfLeft : false,
+        isMovingRight : false
+    };
+    var isGameOver = false;
+    document.addEventListener('keyup', function (event) {
+        console.log('KEY UP');
+        console.log(event);
+
+        if(event.keyCode === 37){
+            paddle.isMovinfLeft = false;
+        }
+        else if (event.keyCode === 39){
+            paddle.isMovingRight = false;
+        }
+    }
+    );
+
+    document.addEventListener('keydown', function (event) {
+            console.log('KEY DOWN');
+            console.log(event);
+
+            if(event.keyCode === 37){
+                paddle.isMovinfLeft = true;
+            }
+            else if (event.keyCode === 39){
+                paddle.isMovingRight = true;
+            }
+        }
+    );
+
+    function createCircle(){
+
+        context.beginPath();
+        context.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
+        context.fillStyle = '#A52A2A';
+        context.fill();
+        context.closePath();
+
+    }
+    function createPaddle() {
+        context.beginPath();
+        context.rect(paddle.x, paddle.y, paddle.width, paddle.height);
+        context.fillStyle = '#F08080';
+        context.fill();
+        context.closePath();
+
+    }
+    function handleBallCollideBounds(){
+
+        if (ball.x < ball.radius || ball.x > canvas.width - ball.radius){
+            ball.dx = -ball.dx;
+        }
+        if ((ball.y < ball.radius)) {
+            ball.dy = -ball.dy
+        }
+    }
+    function updateBallPosition() {
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+
+    }
+    function updatePaddlePosition() {
+        if (paddle.isMovinfLeft){
+            paddle.x -= paddle.speed;
+        }
+        else if (paddle.isMovingRight){
+            paddle.x += paddle.speed;
+        }
+        if (paddle.x < 0){
+            paddle.x = 0;
+        }
+        else if (paddle.x > canvas.width - paddle.width){
+            paddle.x =canvas.width - paddle.width;
+        }
+    }
+    function checkGameOver() {
+        if (ball.y > canvas.height - ball.radius){
+            isGameOver = true;
+        }
+
+    }
+    function handlePaddleCollideBounds() {
+        if (ball.x + ball.radius >= paddle.x && ball.x + ball.radius <=  paddle.x + paddle.width && ball.y + ball.radius >= canvas.height - 100 - paddle.height){
+            ball.dy = -ball.dy;
+        }
+    }
+
+    function draw() {
+        if (!isGameOver) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            createCircle();
+            createPaddle();
+            handleBallCollideBounds();
+            handlePaddleCollideBounds();
+            updateBallPosition();
+            updatePaddlePosition();
+            requestAnimationFrame(draw);
+            checkGameOver();
+        }
+        else {
+            alert('Game over!');
+        }
+
+
+    }
+    draw();
+</script>
+</body>
+</html>
