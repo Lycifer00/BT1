@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function isPrime() {
+        var int = parseInt(prompt('Nhập số'));
+
+        
+        if (int < 2){
+            index = false;
+        }
+        for (var i = 2; i <= Math.sqrt(int); i++){
+            if (int % i === 0 && int > 2){
+                index = false;
+            }
+        }
+        if (index === false){
+            document.write('False!');
+        }
+        if(index === true) {
+            document.write('True!');
+        }
+
+    }
+    var index = true;
+    isPrime();
+</script>
+</body>
+</html>
