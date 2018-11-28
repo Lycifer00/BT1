@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var x = 0;
+    var y = 1;
+    var index = 20;
+    var z;
+    document.write('Số đầu tiên trong dãy fibonacci chia hết cho 5 là: ','&nbsp');
+    for (var i = 2;i < index; ++i){
+        z = x + y;
+        x = y;
+        y = z;
+        if (z % 5 === 0){
+            document.write(z);
+            break;
+        }
+
+    }
+</script>
+</body>
+</html>
