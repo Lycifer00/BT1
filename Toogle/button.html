@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="button.js" async defer></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="button.css" />
+</head>
+<body text="#a52a2a" bgcolor="#ffe4c4">
+<p id="tg"></p>
+<div class="container">
+    <h2>Good - Fast - Cheap</h2>
+    <h1>GOOD</h1>
+
+    <label class="switch">
+        <input id="bt1" type="checkbox"  onclick="Toggle1()">
+        <span class="slider round"></span>
+    </label>
+
+    <br>
+    <br>
+    <h1>FAST</h1>
+
+    <label id="bt2" class="switch1">
+        <input  type="checkbox"   onclick="Toggle2()">
+        <span class="slider1 round"></span>
+    </label>
+
+    <br>
+    <br>
+    <h1>CHEAP</h1>
+
+    <label class="switch2">
+        <input id="bt3" type="checkbox"   onclick="Toggle3()">
+        <span class="slider2 round"></span>
+    </label>
+</div>
+<script>
+    var x, y, z;
+
+    function Toggle1() {
+
+        x = document.getElementById("bt1").value;
+    }
+    function Toggle2() {
+        y = document.getElementById("bt2").value;
+
+    }
+    function Toggle3() {
+        z = document.getElementById("bt3").value;
+
+    }
+    function Toggle() {
+        Toggle1();
+        Toggle2();
+        Toggle3();
+        if (x.checked){
+            if (y.checked){
+                if (z.checked) {
+                    y.checked = false;
+                }
+            }
+            else{
+                y.checked = true;
+                x.checked = false;
+            }
+        }
+        else {
+            x.checked = true;
+            z.checked = false;
+        }
+
+
+    }
+    window.onload = function () {
+        Toggle();
+
+
+    };
+</script>
+</body>
+</html>
